@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Socket IO Chat with Node!</title>
+	<link rel="stylesheet" href="css/main.css">
+	<script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+	<main id="app">
+		<div class="main-container">
+			<section class="info-container">
+				<h1>Socket IO Chat Group</h1>
+				<button @click="onChangeNickname">Change your Nickname</button>
+			</section>
+
+			<section class="messages-container">
+				<ul id="messages">
+					<!-- render a new message component for every message -->
+					<transition-group name="list">
+						<newmessage v-for="(message, index) in messages" :key="index" :msg="message"></newmessage>
+					</transition-group>
+				</ul>
+			</section>
+
+			<section class="input-container">
+				<form>
+					<textarea v-model="message" class="message" type="text" autocomplete="off" id="textarea"></textarea>
+					<button class="submit-btn" @click.prevent="dispatchMessage" type="submit">submit</button>
+				</form>
+			</section>
+		</div>
+		<login-modal :open="openStatus" @getusername="getUsername"></login-modal>
+	</main>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="module" src="js/main_vm.js"></script>
+</body>
+
+</html>

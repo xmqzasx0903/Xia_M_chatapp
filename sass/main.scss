@@ -1,0 +1,169 @@
+/* reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	font: 16px Helvetica, Arial;
+	color: #262626;
+}
+
+::-webkit-scrollbar {
+	width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #efefef;
+	border-radius: 10px;
+}
+
+// new
+$bg-color: #eee;
+$primary-color: #027aff;
+
+button {
+	width: 80px;
+	height: 32px;
+	background-color: $primary-color;
+	text-align: center;
+	line-height: 32px;
+	font-size: 14px;
+	border-radius: 2px;
+	color: #fff;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: all 200ms ease-in-out;
+
+	&:hover {
+		background-color: rgba($primary-color, 0.6);
+	}
+}
+
+main {
+	display: flex;
+	height: 100%;
+	flex-direction: row;
+}
+
+#messages {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		padding: 5px 10px;
+	}
+
+	li:nth-child(odd) {
+		background: #eee;
+	}
+}
+
+#app {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $bg-color;
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		content: '';
+		background-color: $primary-color;
+		width: 100vw;
+		height: 50vh;
+	}
+
+}
+
+.main-container {
+	position: absolute;
+	z-index: 100;
+	width: 780px;
+	height: calc(100% - 280px);
+	box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.04),
+		0 3px 6px 0 rgba(0, 0, 0, 0.04),
+		0 5px 12px 4px rgba(0, 0, 0, 0.04);
+	background-color: #fff;
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+
+	.info-container {
+		height: 60px;
+		padding: 10px 30px;
+		background-color: rgb(237, 237, 237);
+		border-bottom: 1px solid #f0f0f0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		h1 {
+			font-size: 18px;
+			line-height: 40px;
+		}
+
+		button {
+			float: right;
+			background-color: #f0f0f0;
+			color: #666;
+			width: auto;
+			font-size: 12px;
+		}
+	}
+
+	.messages-container {
+		margin: 0 30px;
+		padding-top: 20px;
+		flex: 4;
+		border-bottom: 1px solid #f0f0f0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		max-height: 100%;
+	}
+
+	.input-container {
+		margin: 0 30px 30px;
+		flex: 1;
+
+		form {
+			padding: 20px 0;
+			position: relative;
+			height: 100%;
+
+			textarea {
+				width: 100%;
+				height: calc(100% - 32px);
+				font-size: 14px;
+				color: #666;
+				border: none;
+				outline: none;
+				line-height: 23px;
+			}
+
+			button {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+		}
+	}
+
+}
+
+
+// imports
+
+@import 'modules/_message';
+@import 'modules/modal';

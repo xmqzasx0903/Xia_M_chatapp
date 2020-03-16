@@ -1,0 +1,64 @@
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-dialog {
+        width: 400px;
+        height: 120px;
+        background-color: #fff;
+        box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+            0 6px 16px 0 rgba(0, 0, 0, 0.08),
+            0 9px 28px 8px rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+        padding: 20px 30px;
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-top: 24px;
+
+            input {
+                flex: 1;
+                display: block;
+                margin-right: 10px;
+                height: 32px;
+                line-height: 32px;
+                outline: none;
+                border: 1px solid #f0f0f0;
+                padding: 0 10px;
+                border-radius: 2px;
+                color: #666;
+                font-size: 14px;
+
+                &::placeholder {
+                    color: rgba(0, 0, 0, 0.45);
+                }
+            }
+        }
+
+        p {
+            margin-top: 10px;
+            color: #ddd;
+            font-size: 12px;
+            text-align: right;
+        }
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}

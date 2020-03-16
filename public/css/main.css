@@ -1,0 +1,283 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font: 16px Helvetica, Arial;
+  color: #262626;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #efefef;
+  border-radius: 10px;
+}
+
+button {
+  width: 80px;
+  height: 32px;
+  background-color: #027aff;
+  text-align: center;
+  line-height: 32px;
+  font-size: 14px;
+  border-radius: 2px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+button:hover {
+  background-color: rgba(2, 122, 255, 0.6);
+}
+
+main {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#messages li {
+  padding: 5px 10px;
+}
+#messages li:nth-child(odd) {
+  background: #eee;
+}
+
+#app {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+}
+#app::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  background-color: #027aff;
+  width: 100vw;
+  height: 50vh;
+}
+
+.main-container {
+  position: absolute;
+  z-index: 100;
+  width: 780px;
+  height: calc(100% - 280px);
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.04), 0 3px 6px 0 rgba(0, 0, 0, 0.04), 0 5px 12px 4px rgba(0, 0, 0, 0.04);
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.main-container .info-container {
+  height: 60px;
+  padding: 10px 30px;
+  background-color: #ededed;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-container .info-container h1 {
+  font-size: 18px;
+  line-height: 40px;
+}
+.main-container .info-container button {
+  float: right;
+  background-color: #f0f0f0;
+  color: #666;
+  width: auto;
+  font-size: 12px;
+}
+.main-container .messages-container {
+  margin: 0 30px;
+  padding-top: 20px;
+  flex: 4;
+  border-bottom: 1px solid #f0f0f0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+}
+.main-container .input-container {
+  margin: 0 30px 30px;
+  flex: 1;
+}
+.main-container .input-container form {
+  padding: 20px 0;
+  position: relative;
+  height: 100%;
+}
+.main-container .input-container form textarea {
+  width: 100%;
+  height: calc(100% - 32px);
+  font-size: 14px;
+  color: #666;
+  border: none;
+  outline: none;
+  line-height: 23px;
+}
+.main-container .input-container form button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.msg::after {
+  content: ".";
+  height: 0;
+  display: block;
+  clear: both;
+}
+
+.new-message {
+  position: relative;
+  left: 6px;
+  min-width: 20%;
+  max-width: 45%;
+  padding: 6px 14px;
+  background-color: #efefef;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  float: left;
+  clear: both;
+}
+.new-message::after {
+  position: absolute;
+  top: calc(50% - 4px);
+  left: -4px;
+  content: "";
+  border-style: solid;
+  border-width: 4px 4px 4px 0;
+  border-color: transparent #efefef transparent transparent;
+}
+.new-message span {
+  display: block;
+  margin-bottom: 2px;
+  color: rgba(0, 0, 0, 0.85);
+}
+.new-message span.username {
+  font-size: 12px;
+  margin-bottom: 4px;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.25);
+}
+.new-message span.message-content {
+  font-size: 14px;
+}
+
+.my-message {
+  left: -6px;
+  background-color: #027aff;
+  float: right;
+}
+.my-message::after {
+  left: auto;
+  right: -4px;
+  border-width: 4px 0 4px 4px;
+  border-color: transparent transparent transparent #027aff;
+}
+.my-message span {
+  color: #fff;
+}
+.my-message span.username {
+  color: rgba(255, 255, 255, 0.5);
+  text-align: right;
+}
+
+.new {
+  font-size: 12px;
+  text-align: center;
+  color: #999;
+  padding: 10px;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-container .modal-dialog {
+  width: 400px;
+  height: 120px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  padding: 20px 30px;
+}
+.modal-container .modal-dialog .input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+}
+.modal-container .modal-dialog .input-container input {
+  flex: 1;
+  display: block;
+  margin-right: 10px;
+  height: 32px;
+  line-height: 32px;
+  outline: none;
+  border: 1px solid #f0f0f0;
+  padding: 0 10px;
+  border-radius: 2px;
+  color: #666;
+  font-size: 14px;
+}
+.modal-container .modal-dialog .input-container input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.modal-container .modal-dialog p {
+  margin-top: 10px;
+  color: #ddd;
+  font-size: 12px;
+  text-align: right;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/*# sourceMappingURL=main.css.map */
